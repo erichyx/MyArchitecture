@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        applicationId "com.arch.eric"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation deps.support.app_compat
+    implementation deps.support.design
+    implementation deps.support.constraint_layout
+    // Architecture components
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation deps.support.constraint_layout
+    implementation deps.support.v4
+    implementation deps.support.constraint_layout
+    annotationProcessor deps.lifecycle.compiler
+    implementation deps.room.runtime
+    annotationProcessor deps.room.compiler
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.rxjava2
+    implementation deps.retrofit.gson
+    implementation deps.rxjava2
+    implementation deps.rx_android
+    implementation deps.glide.runtime
+    annotationProcessor deps.glide.compiler
+    implementation deps.glide.okhttp3
+    implementation deps.butterknife.runtime
+    annotationProcessor deps.butterknife.compiler
+    implementation deps.support.cardview
+    implementation deps.support.v4
+    testImplementation deps.junit
+    androidTestImplementation deps.test.runner
+//    androidTestImplementation deps.espresso.core
+}
