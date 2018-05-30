@@ -41,6 +41,10 @@ public abstract class BaseViewModel<T> extends ViewModel
         mCallback = callback;
     }
 
+    public void setFailureCallback(FailureCallback callback) {
+        mCallback = callback;
+    }
+
     public interface FailureCallback {
         void onFailure(String reqTag, String error);
     }

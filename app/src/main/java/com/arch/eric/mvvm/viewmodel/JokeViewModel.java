@@ -6,6 +6,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.arch.lifecycle.ViewModel;
+import android.support.v7.widget.RecyclerView;
 
 import com.arch.eric.entity.JokeEntity;
 import com.arch.eric.entity.JokeResultEntity;
@@ -27,6 +28,15 @@ public class JokeViewModel extends BaseViewModel<JokeResultEntity>
 {
     private MutableLiveData<List<JokeEntity>> mObservableJokes;
     private JokeRepo mJokeRepo = new JokeRepo();
+    private boolean mRefreshing = false;
+
+    public boolean isRefreshing() {
+        return mRefreshing;
+    }
+
+    public void setRefreshing(boolean refreshing) {
+        mRefreshing = refreshing;
+    }
 
     public LiveData<List<JokeEntity>> getJokes(int count)
     {
@@ -34,6 +44,7 @@ public class JokeViewModel extends BaseViewModel<JokeResultEntity>
             mObservableJokes = new MutableLiveData<>();
         }
 
+        mRefreshing = true;
         mJokeRepo.getJokes(count)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -44,5 +55,12 @@ public class JokeViewModel extends BaseViewModel<JokeResultEntity>
     @Override
     public void onSuccess(JokeResultEntity jokeResultEntity) {
         mObservableJokes.setValue(jokeResultEntity.getJokeList());
+        mRefreshing = false;
+    }
+
+    @Override
+    public void onError(Throwable e) {
+        super.onError(e);
+        mRefreshing = false;
     }
 }

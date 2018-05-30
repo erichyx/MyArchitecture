@@ -21,20 +21,21 @@ public class MainActivity extends AppCompatActivity
         public boolean onNavigationItemSelected(@NonNull MenuItem item)
         {
             switch (item.getItemId()) {
-                case R.id.navigation_mvvm:
-                    if (mMvvmFragment == null) {
-                        mMvvmFragment = MvvmFragment.newInstance();
-                    }
-                    ActivityUtils.replaceFragmentToActivity(getSupportFragmentManager(), mMvvmFragment, R.id.container);
-                    return true;
                 case R.id.navigation_mvp:
                     if (mvpFragment == null) {
                         mvpFragment = MvpFragment.newInstance();
                     }
                     ActivityUtils.replaceFragmentToActivity(getSupportFragmentManager(), mvpFragment, R.id.container);
                     return true;
+                case R.id.navigation_mvvm:
+                    if (mMvvmFragment == null) {
+                        mMvvmFragment = MvvmFragment.newInstance();
+                    }
+                    ActivityUtils.replaceFragmentToActivity(getSupportFragmentManager(), mMvvmFragment, R.id.container);
+                    return true;
                 case R.id.navigation_other:
-
+                    OtherFragment otherFragment = OtherFragment.newInstance();
+                    ActivityUtils.replaceFragmentToActivity(getSupportFragmentManager(), otherFragment, R.id.container);
                     return true;
             }
             return false;

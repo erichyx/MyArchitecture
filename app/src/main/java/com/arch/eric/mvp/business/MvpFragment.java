@@ -37,12 +37,12 @@ public class MvpFragment extends BaseMvpFragment implements JokeView,
     }
 
     @Override
-    protected int getLayoutId() {
+    public int getLayoutId() {
         return R.layout.fragment_home;
     }
 
     @Override
-    protected void initView() {
+    public void initView() {
         mJokeAdapter = new JokeAdapter();
         mRecyclerView.setAdapter(mJokeAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -50,7 +50,7 @@ public class MvpFragment extends BaseMvpFragment implements JokeView,
     }
 
     @Override
-    protected void onPrepare() {
+    public void onPrepare() {
         jokePresenter = getPresenter(JokePresenter.class, this);
         onRefresh();
     }
