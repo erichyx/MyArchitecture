@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.arch.eric.mvvm.viewmodel.JokeViewModel" />
+            type="com.arch.eric.mvvm.viewmodel.MovieViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

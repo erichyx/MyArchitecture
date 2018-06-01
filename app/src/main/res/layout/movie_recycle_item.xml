@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="MovieItemBinding">
+
+        <import type="android.view.View" />
+
+        <variable
+            name="movieSubject"
+            type="com.arch.eric.entity.MovieSubjectEntity.SubjectsBean" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="true"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp">
+
+        <ImageView
+            android:id="@+id/movie_iv_poster"
+            style="@style/Subject.Cover.M"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            app:imageUrl="@{movieSubject.images.small}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <android.support.constraint.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="movie_tv_attendance,movie_tv_online_ticket" />
+
+        <TextView
+            android:id="@+id/movie_tv_attendance"
+            style="@style/Text.Frodo.P6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="16dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@{movieSubject.collectCount >= 10000 ? @string/movie_watch_num_over_ten_thousand((float)movieSubject.collectCount/10000.0f) : @string/movie_watch_num((float)movieSubject.collectCount)}"
+            android:textColor="@color/movie_pink"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="8.0万人看过" />
+
+        <TextView
+            android:id="@+id/movie_tv_online_ticket"
+            style="@style/Text.Frodo.H5"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/btn_movie_pink"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="购票"
+            android:textColor="@color/movie_pink_text"
+            app:jumpUrl="@{movieSubject.alt}"
+            app:layout_constraintEnd_toEndOf="@+id/movie_tv_attendance"
+            app:layout_constraintTop_toBottomOf="@+id/movie_tv_attendance" />
+
+        <TextView
+            android:id="@+id/movie_tv_title"
+            style="@style/Subject.Title.S"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:maxLines="2"
+            android:text="@{movieSubject.title}"
+            app:layout_constraintBottom_toTopOf="@+id/movie_tv_rating"
+            app:layout_constraintEnd_toStartOf="@+id/barrier"
+            app:layout_constraintStart_toEndOf="@+id/movie_iv_poster"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="超时空同居" />
+
+        <RatingBar
+            android:id="@+id/movie_rating_bar"
+            style="@style/Widget.Frodo.RatingBar.XSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="1dp"
+            android:isIndicator="true"
+            android:max="@{movieSubject.rating.max}"
+            android:numStars="5"
+            android:rating="@{movieSubject.rating}"
+            android:visibility="@{movieSubject.rating.average == 0f ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toTopOf="@+id/movie_tv_director"
+            app:layout_constraintLeft_toLeftOf="@+id/movie_tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/movie_tv_title" />
+
+        <TextView
+            android:id="@+id/movie_tv_rating"
+            style="@style/Subject.RatingText.S"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_marginLeft="4dp"
+            android:text="@{movieSubject.rating.average == 0f ? @string/movie_no_comment : @string/movie_rating_format(movieSubject.rating.average)}"
+            android:textColor="@color/medium_gray"
+            app:layout_constraintStart_toEndOf="@+id/movie_rating_bar"
+            app:layout_constraintTop_toBottomOf="@+id/movie_tv_title"
+            tools:text="7.2" />
+
+        <TextView
+            android:id="@+id/movie_tv_director"
+            style="@style/Text.Frodo.P6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{@string/movie_director(movieSubject.directors[0].name)}"
+            android:textColor="@color/douban_gray_55_percent"
+            app:layout_constraintEnd_toStartOf="@+id/barrier"
+            app:layout_constraintStart_toStartOf="@+id/movie_tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/movie_tv_rating"
+            tools:text="导演：" />
+
+        <TextView
+            android:id="@+id/movie_tv_actors"
+            style="@style/Text.Frodo.P6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1.1"
+            android:maxLines="2"
+            android:text="@{@string/movie_actors(movieSubject.toActorStr())}"
+            android:textColor="@color/douban_gray_55_percent"
+            app:layout_constraintEnd_toStartOf="@+id/movie_tv_online_ticket"
+            app:layout_constraintStart_toStartOf="@+id/movie_tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/movie_tv_director"
+            tools:text="主演：" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

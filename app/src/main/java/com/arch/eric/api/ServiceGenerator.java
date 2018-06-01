@@ -1,7 +1,7 @@
 package com.arch.eric.api;
 
 
-import com.arch.eric.app.MyApplication;
+import com.arch.eric.app.BasicApp;
 import com.arch.eric.utils.Retrofit2Utils;
 
 /**
@@ -15,6 +15,6 @@ public class ServiceGenerator
 
     public static <T> T createService(Class<T> serviceClass)
     {
-        return Retrofit2Utils.getInstance(MyApplication.getContext()).create(serviceClass);
+        return Retrofit2Utils.getInstance(BasicApp.getContext()).create(serviceClass);
     }
 }

@@ -2,7 +2,7 @@ package com.arch.eric.mvp.business;
 
 import com.arch.eric.entity.JokeResultEntity;
 import com.arch.eric.mvp.BaseMvpPresenter;
-import com.arch.eric.repository.JokeRepo;
+import com.arch.eric.data.remote.RemoteRepo;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -15,10 +15,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class JokePresenter extends BaseMvpPresenter<JokeView> {
 
-    private JokeRepo mJokeRepo;
+    private RemoteRepo mJokeRepo;
 
     public JokePresenter() {
-        mJokeRepo = new JokeRepo();
+        mJokeRepo = new RemoteRepo();
     }
 
     public void fetchJokes(int count) {

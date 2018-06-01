@@ -3,4 +3,29 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#ffffffff</color>
+    <color name="translucence">#66000000</color>
+    <color name="transparent">#00ffffff</color>
+
+    <color name="black_transparent_10">#19000000</color>
+    <color name="black_transparent_20">#33000000</color>
+    <color name="black_transparent_28">#47000000</color>
+    <color name="black_transparent_3">#07000000</color>
+    <color name="black_transparent_35">#5a000000</color>
+    <color name="black_transparent_40">#66000000</color>
+    <color name="black_transparent_50">#80000000</color>
+    <color name="black_transparent_60">#99000000</color>
+    <color name="black_transparent_75">#bf000000</color>
+
+    <color name="douban_gray">#ff494949</color>
+    <color name="douban_gray_15_percent">#26cccccc</color>
+    <color name="douban_gray_28_percent">#ffcccccc</color>
+    <color name="douban_gray_55_percent">#ff9b9b9b</color>
+    <color name="douban_gray_5_percent">#fff6f6f6</color>
+    <color name="douban_gray_transparent_20">#33494949</color>
+    <color name="medium_gray">#ff909090</color>
+
+    <color name="movie_pink">#ffff6677</color>
+    <color name="movie_pink_80_percent">#ccff6677</color>
 </resources>

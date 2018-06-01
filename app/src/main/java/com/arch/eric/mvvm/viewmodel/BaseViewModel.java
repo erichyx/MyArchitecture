@@ -2,6 +2,7 @@ package com.arch.eric.mvvm.viewmodel;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.arch.lifecycle.ViewModel;
 
@@ -18,6 +19,7 @@ public abstract class BaseViewModel<T> extends ViewModel
     // 请求的标记，用于区分错误回调
     private String mReqTag = "ReqTag";
     private FailureCallback mCallback;
+    private final MediatorLiveData<T> result = new MediatorLiveData<>();
 
     @Override
     public void onSubscribe(Disposable d) {

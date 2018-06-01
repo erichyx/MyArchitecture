@@ -6,5 +6,5 @@ package com.arch.eric.app;
 
 public interface Constants
 {
-    String BaseURL = "http://api.icndb.com/jokes/";
+    String BaseURL = "https://www.github.com/";
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.widget.ImageView;
 
-import com.arch.eric.app.MyApplication;
+import com.arch.eric.app.BasicApp;
 import com.arch.eric.common.image.ImageLoader;
 
 import java.io.File;
@@ -17,7 +17,7 @@ import java.io.File;
 public class GlideImageLoader implements ImageLoader
 {
     public GlideImageLoader() {
-        init(MyApplication.getContext());
+        init(BasicApp.getContext());
     }
 
     @Override

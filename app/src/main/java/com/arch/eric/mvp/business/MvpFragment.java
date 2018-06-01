@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import com.arch.eric.R;
 import com.arch.eric.entity.JokeEntity;
 import com.arch.eric.mvp.view.BaseMvpFragment;
-import com.arch.eric.mvvm.ui.JokeAdapter;
+import com.arch.eric.mvp.JokeAdapter;
 
 import java.util.List;
 

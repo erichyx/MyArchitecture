@@ -1,4 +1,4 @@
-package com.arch.eric.mvvm.ui;
+package com.arch.eric.mvp;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;

@@ -3,11 +3,11 @@ package com.arch.eric.mvvm.ui;
 import com.arch.eric.BR;
 import com.arch.eric.R;
 import com.arch.eric.databinding.ActivityMvvmBinding;
-import com.arch.eric.mvvm.viewmodel.JokeViewModel;
+import com.arch.eric.mvvm.viewmodel.MovieViewModel;
 
-public class MvvmActivity extends BaseActivity<ActivityMvvmBinding, JokeViewModel> {
+public class MvvmActivity extends BaseActivity<ActivityMvvmBinding, MovieViewModel> {
 
-    private JokeViewModel mJokeViewModel;
+    private MovieViewModel mMovieViewModel;
 
     @Override
     public int getLayoutId() {
@@ -20,8 +20,8 @@ public class MvvmActivity extends BaseActivity<ActivityMvvmBinding, JokeViewMode
     }
 
     @Override
-    public JokeViewModel getViewModel() {
-        mJokeViewModel = getViewModel(JokeViewModel.class);
-        return mJokeViewModel;
+    public MovieViewModel getViewModel() {
+        mMovieViewModel = getViewModel(MovieViewModel.class);
+        return mMovieViewModel;
     }
 }

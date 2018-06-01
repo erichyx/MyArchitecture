@@ -17,4 +17,188 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="Subject" />
+
+    <style name="Subject.Cover" parent="@style/Subject">
+        <item name="android:scaleType">centerCrop</item>
+        <!--<item name="border_width">0.5dp</item>-->
+        <!--<item name="border_color">@color/black_transparent_10</item>-->
+        <!--<item name="shape">rect</item>-->
+        <!--<item name="rect_radius">0.0dip</item>-->
+    </style>
+
+    <style name="Subject.Cover.L" parent="@style/Subject.Cover">
+        <item name="android:layout_width">100.0dp</item>
+        <item name="android:layout_height">140.0dp</item>
+    </style>
+
+    <style name="Subject.Cover.M" parent="@style/Subject.Cover">
+        <item name="android:layout_width">80.0dp</item>
+        <item name="android:layout_height">112.0dp</item>
+    </style>
+
+    <style name="Subject.Cover.S" parent="@style/Subject.Cover">
+        <item name="android:layout_width">60.0dp</item>
+        <item name="android:layout_height">84.0dp</item>
+    </style>
+
+    <style name="Subject.Cover.XS" parent="@style/Subject.Cover">
+        <item name="android:layout_width">40.0dp</item>
+        <item name="android:layout_height">56.0dp</item>
+    </style>
+
+    <style name="Subject.Title" parent="@style/Subject">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/douban_gray</item>
+    </style>
+
+    <style name="Subject.Title.L" parent="@style/Subject.Title">
+        <item name="android:textSize">13.0sp</item>
+    </style>
+
+    <style name="Subject.Title.M" parent="@style/Subject.Title">
+        <item name="android:textSize">17.0sp</item>
+    </style>
+
+    <style name="Subject.Title.S" parent="@style/Subject.Title">
+        <item name="android:textSize">17.0sp</item>
+    </style>
+
+    <style name="Subject.Title.XS" parent="@style/Subject.Title">
+        <item name="android:textSize">15.0sp</item>
+    </style>
+
+    <style name="Subject.RatingText" parent="@style/Subject">
+        <item name="android:textColor">@color/douban_gray_55_percent</item>
+    </style>
+
+    <style name="Subject.RatingText.L" parent="@style/Subject.RatingText">
+        <item name="android:textSize">11.0sp</item>
+    </style>
+
+    <style name="Subject.RatingText.M" parent="@style/Subject.RatingText">
+        <item name="android:textSize">11.0sp</item>
+    </style>
+
+    <style name="Subject.RatingText.S" parent="@style/Subject.RatingText">
+        <item name="android:textSize">11.0sp</item>
+    </style>
+
+    <style name="Subject.RatingText.XS" parent="@style/Subject.RatingText">
+        <item name="android:textSize">11.0sp</item>
+    </style>
+
+    <style name="Text" />
+
+    <style name="Text.Frodo" parent="@style/Text" />
+
+    <style name="Text.Frodo.P" parent="@style/Text.Frodo">
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Text.Frodo.P0" parent="@style/Text.Frodo.P">
+        <item name="android:textSize">23.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.P1" parent="@style/Text.Frodo.P">
+        <item name="android:textSize">21.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.P2" parent="@style/Text.Frodo.P">
+        <item name="android:textSize">17.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.P3" parent="@style/Text.Frodo.P">
+        <item name="android:textSize">15.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.P4" parent="@style/Text.Frodo.P">
+        <item name="android:textSize">15.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.P5" parent="@style/Text.Frodo.P">
+        <item name="android:textSize">13.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.P6" parent="@style/Text.Frodo.P">
+        <item name="android:textSize">11.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.P7" parent="@style/Text.Frodo.P">
+        <item name="android:textSize">10.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.H" parent="@style/Text.Frodo">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Frodo.H2" parent="@style/Text.Frodo.H">
+        <item name="android:textSize">19.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.H3" parent="@style/Text.Frodo.H">
+        <item name="android:textSize">17.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.H4" parent="@style/Text.Frodo.H">
+        <item name="android:textSize">15.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.H5" parent="@style/Text.Frodo.H">
+        <item name="android:textSize">13.0sp</item>
+    </style>
+
+    <style name="Text.Frodo.H6" parent="@style/Text.Frodo.H">
+        <item name="android:textSize">11.0sp</item>
+    </style>
+
+    <style name="Widget.Frodo.RatingBar" parent="@android:style/Widget.Holo.Light.RatingBar">
+        <item name="android:maxHeight">42.0dip</item>
+        <item name="android:indeterminateDrawable">@drawable/frodo_ratingbar_large</item>
+        <item name="android:progressDrawable">@drawable/frodo_ratingbar_large</item>
+        <item name="android:minHeight">42.0dip</item>
+    </style>
+
+    <style name="Widget.Frodo.RatingBar.Middle" parent="@android:style/Widget.Holo.Light.RatingBar">
+        <item name="android:maxHeight">24.0dip</item>
+        <item name="android:indeterminateDrawable">@drawable/frodo_ratingbar_middle</item>
+        <item name="android:progressDrawable">@drawable/frodo_ratingbar_middle</item>
+        <item name="android:minHeight">24.0dip</item>
+    </style>
+
+    <style name="Widget.Frodo.RatingBar.ShareCard" parent="@style/Widget.Frodo.RatingBar">
+        <item name="android:maxHeight">9.0dip</item>
+        <item name="android:indeterminateDrawable">@drawable/rating_card_star</item>
+        <item name="android:progressDrawable">@drawable/rating_card_star</item>
+        <item name="android:minHeight">9.0dip</item>
+    </style>
+
+    <style name="Widget.Frodo.RatingBar.ShareCard.Empty" parent="@style/Widget.Frodo.RatingBar.ShareCard">
+        <item name="android:maxHeight">9.0dip</item>
+        <item name="android:indeterminateDrawable">@drawable/rating_star_card_empty</item>
+        <item name="android:progressDrawable">@drawable/rating_star_card_empty</item>
+        <item name="android:minHeight">9.0dip</item>
+    </style>
+
+    <style name="Widget.Frodo.RatingBar.Small" parent="@android:style/Widget.Holo.Light.RatingBar.Small">
+        <item name="android:maxHeight">16.0dip</item>
+        <item name="android:indeterminateDrawable">@drawable/frodo_ratingbar_small</item>
+        <item name="android:progressDrawable">@drawable/frodo_ratingbar_small</item>
+        <item name="android:minHeight">16.0dip</item>
+    </style>
+
+    <style name="Widget.Frodo.RatingBar.XSmall" parent="@android:style/Widget.Holo.Light.RatingBar.Small">
+        <item name="android:maxHeight">12.0dp</item>
+        <item name="android:indeterminateDrawable">@drawable/frodo_ratingbar_xsmall</item>
+        <item name="android:progressDrawable">@drawable/frodo_ratingbar_xsmall</item>
+        <item name="android:minHeight">12.0dp</item>
+    </style>
+
+    <style name="Widget.Frodo.RatingBar.XSmall.Empty" parent="@android:style/Widget.Holo.Light.RatingBar.Small">
+        <item name="android:maxHeight">13.0dip</item>
+        <item name="android:indeterminateDrawable">@drawable/rating_star_empty</item>
+        <item name="android:progressDrawable">@drawable/rating_star_empty</item>
+        <item name="android:minHeight">13.0dip</item>
+    </style>
+
 </resources>

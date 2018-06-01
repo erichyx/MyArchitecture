@@ -7,12 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.arch.eric.mvp.business.MvpFragment;
-import com.arch.eric.mvvm.ui.MvvmFragment;
+import com.arch.eric.mvvm.ui.MovieFragment;
 import com.arch.eric.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity
 {
-    private MvvmFragment mMvvmFragment;
+    private MovieFragment mMovieFragment;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener()
     {
@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity
                     ActivityUtils.replaceFragmentToActivity(getSupportFragmentManager(), mvpFragment, R.id.container);
                     return true;
                 case R.id.navigation_mvvm:
-                    if (mMvvmFragment == null) {
-                        mMvvmFragment = MvvmFragment.newInstance();
+                    if (mMovieFragment == null) {
+                        mMovieFragment = MovieFragment.newInstance();
                     }
-                    ActivityUtils.replaceFragmentToActivity(getSupportFragmentManager(), mMvvmFragment, R.id.container);
+                    ActivityUtils.replaceFragmentToActivity(getSupportFragmentManager(), mMovieFragment, R.id.container);
                     return true;
                 case R.id.navigation_other:
                     OtherFragment otherFragment = OtherFragment.newInstance();
@@ -50,10 +50,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mMvvmFragment = MvvmFragment.newInstance();
-        ActivityUtils.replaceFragmentToActivity(getSupportFragmentManager(), mMvvmFragment, R.id.container);
+        mMovieFragment = MovieFragment.newInstance();
+        ActivityUtils.replaceFragmentToActivity(getSupportFragmentManager(), mMovieFragment, R.id.container);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setSelectedItemId(R.id.navigation_mvvm);
     }
 }

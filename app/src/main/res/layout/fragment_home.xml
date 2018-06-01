@@ -5,11 +5,11 @@
 
         <variable
             name="fragment"
-            type="com.arch.eric.mvvm.ui.MvvmFragment" />
+            type="com.arch.eric.mvvm.ui.MovieFragment" />
 
         <variable
             name="viewModel"
-            type="com.arch.eric.mvvm.viewmodel.JokeViewModel" />
+            type="com.arch.eric.mvvm.viewmodel.MovieViewModel" />
 
         <variable
             name="isRefreshing"

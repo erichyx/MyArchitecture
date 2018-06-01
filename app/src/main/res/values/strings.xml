@@ -6,4 +6,11 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_test">TestActivity</string>
+
+    <string name="movie_watch_num">%1$.0f人看过</string>
+    <string name="movie_watch_num_over_ten_thousand">%1$.1f万人看过</string>
+    <string name="movie_rating_format">%1$.1f</string>
+    <string name="movie_director">导演：%1$s</string>
+    <string name="movie_actors">主演：%1$s</string>
+    <string name="movie_no_comment">暂无评论</string>
 </resources>
