@@ -8,8 +8,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="movieSubject"
-            type="com.arch.eric.entity.MovieSubjectEntity.SubjectsBean" />
+            name="movieInfo"
+            type="com.arch.eric.data.local.MovieInfo" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -28,7 +28,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            app:imageUrl="@{movieSubject.images.small}"
+            app:imageUrl="@{movieInfo.subject.images.small}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@mipmap/ic_launcher" />
@@ -50,7 +50,7 @@
             android:layout_marginTop="16dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@{movieSubject.collectCount >= 10000 ? @string/movie_watch_num_over_ten_thousand((float)movieSubject.collectCount/10000.0f) : @string/movie_watch_num((float)movieSubject.collectCount)}"
+            android:text="@{movieInfo.subject.collectCount >= 10000 ? @string/movie_watch_num_over_ten_thousand((float)movieInfo.subject.collectCount/10000.0f) : @string/movie_watch_num((float)movieInfo.subject.collectCount)}"
             android:textColor="@color/movie_pink"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -63,12 +63,12 @@
             android:layout_height="30dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/btn_movie_pink"
-            android:clickable="false"
-            android:focusable="false"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
             android:text="购票"
             android:textColor="@color/movie_pink_text"
-            app:jumpUrl="@{movieSubject.alt}"
+            app:jumpUrl="@{movieInfo.subject.alt}"
             app:layout_constraintEnd_toEndOf="@+id/movie_tv_attendance"
             app:layout_constraintTop_toBottomOf="@+id/movie_tv_attendance" />
 
@@ -83,7 +83,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:maxLines="2"
-            android:text="@{movieSubject.title}"
+            android:text="@{movieInfo.subject.title}"
             app:layout_constraintBottom_toTopOf="@+id/movie_tv_rating"
             app:layout_constraintEnd_toStartOf="@+id/barrier"
             app:layout_constraintStart_toEndOf="@+id/movie_iv_poster"
@@ -98,10 +98,10 @@
             android:layout_marginBottom="2dp"
             android:layout_marginTop="1dp"
             android:isIndicator="true"
-            android:max="@{movieSubject.rating.max}"
+            android:max="@{movieInfo.subject.rating.max}"
             android:numStars="5"
-            android:rating="@{movieSubject.rating}"
-            android:visibility="@{movieSubject.rating.average == 0f ? View.GONE : View.VISIBLE}"
+            android:rating="@{movieInfo.subject.rating}"
+            android:visibility="@{movieInfo.subject.rating.average == 0f ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toTopOf="@+id/movie_tv_director"
             app:layout_constraintLeft_toLeftOf="@+id/movie_tv_title"
             app:layout_constraintTop_toBottomOf="@+id/movie_tv_title" />
@@ -111,10 +111,13 @@
             style="@style/Subject.RatingText.S"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:layout_marginLeft="4dp"
-            android:text="@{movieSubject.rating.average == 0f ? @string/movie_no_comment : @string/movie_rating_format(movieSubject.rating.average)}"
+            app:layout_goneMarginStart="0dp"
+            app:layout_goneMarginLeft="0dp"
+            android:text="@{movieInfo.subject.rating.average == 0f ? @string/movie_no_grade : @string/movie_rating_format(movieInfo.subject.rating.average)}"
             android:textColor="@color/medium_gray"
             app:layout_constraintStart_toEndOf="@+id/movie_rating_bar"
             app:layout_constraintTop_toBottomOf="@+id/movie_tv_title"
@@ -129,7 +132,7 @@
             android:layout_marginRight="8dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{@string/movie_director(movieSubject.directors[0].name)}"
+            android:text="@{@string/movie_director(movieInfo.directors[0].name)}"
             android:textColor="@color/douban_gray_55_percent"
             app:layout_constraintEnd_toStartOf="@+id/barrier"
             app:layout_constraintStart_toStartOf="@+id/movie_tv_title"
@@ -146,8 +149,9 @@
             android:ellipsize="end"
             android:lineSpacingMultiplier="1.1"
             android:maxLines="2"
-            android:text="@{@string/movie_actors(movieSubject.toActorStr())}"
+            android:text="@{@string/movie_actors(movieInfo.toActorStr())}"
             android:textColor="@color/douban_gray_55_percent"
+            android:visibility="@{movieInfo.casts.size() > 0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toStartOf="@+id/movie_tv_online_ticket"
             app:layout_constraintStart_toStartOf="@+id/movie_tv_title"
             app:layout_constraintTop_toBottomOf="@+id/movie_tv_director"

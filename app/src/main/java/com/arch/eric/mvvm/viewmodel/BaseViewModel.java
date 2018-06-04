@@ -16,10 +16,7 @@ import io.reactivex.disposables.Disposable;
 public abstract class BaseViewModel<T> extends ViewModel
         implements LifecycleObserver, SingleObserver<T> {
     protected CompositeDisposable mDisposable = new CompositeDisposable();
-    // 请求的标记，用于区分错误回调
-    private String mReqTag = "ReqTag";
-    private FailureCallback mCallback;
-    private final MediatorLiveData<T> result = new MediatorLiveData<>();
+    protected String errorMsg;
 
     @Override
     public void onSubscribe(Disposable d) {
@@ -33,21 +30,6 @@ public abstract class BaseViewModel<T> extends ViewModel
 
     @Override
     public void onError(Throwable e) {
-        if (mCallback != null) {
-            mCallback.onFailure(mReqTag, e.getMessage());
-        }
-    }
-
-    public void setFailureCallback(String reqTag, FailureCallback callback) {
-        mReqTag = reqTag;
-        mCallback = callback;
-    }
-
-    public void setFailureCallback(FailureCallback callback) {
-        mCallback = callback;
-    }
-
-    public interface FailureCallback {
-        void onFailure(String reqTag, String error);
+        errorMsg = e.getMessage();
     }
 }

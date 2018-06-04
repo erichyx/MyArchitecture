@@ -6,7 +6,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.arch.eric.common.image.ImageLoaderManager;
-import com.arch.eric.entity.MovieSubjectEntity.RatingBean;
+import com.arch.eric.data.local.MovieSubjectEntity.RatingBean;
 
 /**
  * Created by eric on 2018/5/31

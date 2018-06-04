@@ -2,13 +2,14 @@ package com.arch.eric.mvvm.ui;
 
 import com.arch.eric.BR;
 import com.arch.eric.R;
+import com.arch.eric.data.local.MovieInfo;
 import com.arch.eric.databinding.MovieItemBinding;
-import com.arch.eric.entity.MovieSubjectEntity.SubjectsBean;
+import com.arch.eric.data.local.MovieSubjectEntity.SubjectsBean;
 
 /**
  * Created by eric on 2018/5/31
  */
-public class MovieItemAdapter extends BaseItemBindingAdapter<SubjectsBean, MovieItemBinding> {
+public class MovieItemAdapter extends BaseItemBindingAdapter<MovieInfo, MovieItemBinding> {
 
     @Override
     protected int getLayoutResId(int viewType) {
@@ -17,7 +18,7 @@ public class MovieItemAdapter extends BaseItemBindingAdapter<SubjectsBean, Movie
 
     @Override
     protected int getVariableId() {
-        return BR.movieSubject;
+        return BR.movieInfo;
     }
 
     @Override

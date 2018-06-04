@@ -3,7 +3,7 @@ package com.arch.eric.data.remote;
 import com.arch.eric.api.ApiService;
 import com.arch.eric.api.ServiceGenerator;
 import com.arch.eric.entity.JokeResultEntity;
-import com.arch.eric.entity.MovieSubjectEntity;
+import com.arch.eric.data.local.MovieSubjectEntity;
 
 import io.reactivex.Single;
 

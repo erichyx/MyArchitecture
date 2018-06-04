@@ -7,11 +7,15 @@ import android.support.annotation.Nullable;
 
 import com.arch.eric.app.BasicApp;
 import com.arch.eric.data.local.AppDatabase;
-import com.arch.eric.entity.MovieSubjectEntity;
+import com.arch.eric.data.local.MovieGenre;
+import com.arch.eric.data.local.MovieInfo;
+import com.arch.eric.data.local.MovieSubjectEntity;
+import com.arch.eric.data.local.MovieSubjectEntity.SubjectsBean;
 import com.arch.eric.data.remote.RemoteRepo;
-import com.arch.eric.entity.MovieSubjectEntity.SubjectsBean;
-import com.arch.eric.mvvm.DataFetcher;
+import com.arch.eric.mvvm.fetcher.DataFetcher;
+import com.arch.eric.mvvm.fetcher.Resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -26,33 +30,45 @@ public class MovieViewModel extends BaseViewModel<MovieSubjectEntity> {
     private RemoteRepo mRemoteRepo = new RemoteRepo();
     private final AppDatabase mDatabase = BasicApp.getDatabase();
 
-    public LiveData<List<SubjectsBean>> getShowingMovie(String city) {
-        return new DataFetcher<List<SubjectsBean>, MovieSubjectEntity>() {
+    public LiveData<Resource<List<MovieInfo>>> getShowingMovie(String city, boolean isInit) {
+        return new DataFetcher<List<MovieInfo>, MovieSubjectEntity>() {
 
+            @Nullable
             @Override
-            protected void saveCallResult(@NonNull MovieSubjectEntity item) {
-                BasicApp.getAppExecutors().diskIO().execute(() -> {
-                    mDatabase.movieDao().insertAll(item.getSubjects());
-                });
-            }
-
-            @Override
-            protected boolean shouldFetch(@Nullable List<SubjectsBean> data) {
-                // 写自己的判断逻辑，用于判断数据是否新鲜
-                // 这里返回true，让它每次都去请求网络最新数据
-                return true;
-            }
-
-            @NonNull
-            @Override
-            protected LiveData<List<SubjectsBean>> loadFromDb() {
-                return mDatabase.movieDao().getAll();
+            protected LiveData<List<MovieInfo>> loadCache() {
+                return isInit ? mDatabase.movieDao().getAllMovies() : null;
             }
 
             @NonNull
             @Override
             protected LiveData<MovieSubjectEntity> createCall() {
                 return createRealCall(city);
+            }
+
+            @NonNull
+            @Override
+            protected List<MovieInfo> transform(MovieSubjectEntity source) {
+                List<MovieInfo> movieInfos = new ArrayList<>();
+                List<SubjectsBean> subjects = source.getSubjects();
+                for (SubjectsBean subjectsBean : subjects) {
+                    MovieInfo movieInfo = new MovieInfo();
+                    movieInfo.setSubject(subjectsBean);
+                    movieInfo.setGenres(MovieGenre.transform(subjectsBean.getSubjectId(), subjectsBean.getGenres()));
+                    movieInfo.setCasts(subjectsBean.getCasts());
+                    movieInfo.setDirectors(subjectsBean.getDirectors());
+                    movieInfos.add(movieInfo);
+                }
+                return movieInfos;
+            }
+
+            @Override
+            protected void saveCallResult(List<MovieInfo> item) {
+                mDatabase.movieDao().insetAllMovies(item);
+            }
+
+            @Override
+            public String onFetchFailInfo() {
+                return errorMsg;
             }
         }.getAsLiveData();
     }

@@ -12,5 +12,5 @@
     <string name="movie_rating_format">%1$.1f</string>
     <string name="movie_director">导演：%1$s</string>
     <string name="movie_actors">主演：%1$s</string>
-    <string name="movie_no_comment">暂无评论</string>
+    <string name="movie_no_grade">暂无评分</string>
 </resources>

@@ -2,11 +2,9 @@ package com.arch.eric.api;
 
 
 import com.arch.eric.entity.JokeResultEntity;
-import com.arch.eric.entity.MovieSubjectEntity;
+import com.arch.eric.data.local.MovieSubjectEntity;
 
 import io.reactivex.Single;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;

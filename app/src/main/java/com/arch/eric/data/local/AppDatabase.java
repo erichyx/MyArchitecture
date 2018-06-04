@@ -10,12 +10,14 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.arch.eric.app.AppExecutors;
-import com.arch.eric.entity.MovieSubjectEntity.SubjectsBean;
+import com.arch.eric.data.local.MovieSubjectEntity.SubjectsBean;
+import com.arch.eric.data.local.MovieSubjectEntity.CastsBean;
+import com.arch.eric.data.local.MovieSubjectEntity.DirectorsBean;
 
 /**
  * Created by eric on 2018/5/31
  */
-@Database(entities = {SubjectsBean.class}, version = 1)
+@Database(entities = {SubjectsBean.class, CastsBean.class, DirectorsBean.class, MovieGenre.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase sInstance;
     public static final String DATABASE_NAME = "arch-db";

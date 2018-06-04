@@ -1,12 +1,12 @@
-package com.arch.eric.entity;
+package com.arch.eric.data.local;
 
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.TypeConverters;
 
-import com.arch.eric.data.local.RoomDataConverter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class MovieSubjectEntity {
      * count : 20
      * start : 0
      * total : 15
-     * subjects : [{"rating":{"max":10,"average":7.2,"stars":"40","min":0},"genres":["喜剧","奇幻"],"title":"超时空同居","casts":[{"alt":"https://movie.douban.com/celebrity/1312940/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1503986232.61.jpg","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1503986232.61.jpg","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1503986232.61.jpg"},"name":"雷佳音","id":"1312940"},{"alt":"https://movie.douban.com/celebrity/1275756/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1367210981.95.jpg","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1367210981.95.jpg","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1367210981.95.jpg"},"name":"佟丽娅","id":"1275756"},{"alt":"https://movie.douban.com/celebrity/1325751/","avatars":{"small":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1499435823.67.jpg","large":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1499435823.67.jpg","medium":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1499435823.67.jpg"},"name":"张衣","id":"1325751"}],"collectCount":80453,"original_title":"超时空同居","subtype":"movie","directors":[{"alt":"https://movie.douban.com/celebrity/1331887/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1520837465.56.jpg","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1520837465.56.jpg","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1520837465.56.jpg"},"name":"苏伦","id":"1331887"}],"year":"2018","images":{"small":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2520331478.jpg","large":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2520331478.jpg","medium":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2520331478.jpg"},"alt":"https://movie.douban.com/subject/27133303/","id":"27133303"}]
+     * subjects : [{"rating":{"max":10,"average":7.2,"stars":"40","min":0},"genres":["喜剧","奇幻"],"title":"超时空同居","casts":[{"alt":"https://movie.douban.com/celebrity/1312940/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1503986232.61.jpg","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1503986232.61.jpg","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1503986232.61.jpg"},"name":"雷佳音","id":"1312940"},{"alt":"https://movie.douban.com/celebrity/1275756/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1367210981.95.jpg","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1367210981.95.jpg","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1367210981.95.jpg"},"name":"佟丽娅","id":"1275756"},{"alt":"https://movie.douban.com/celebrity/1325751/","avatars":{"small":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1499435823.67.jpg","large":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1499435823.67.jpg","medium":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1499435823.67.jpg"},"name":"张衣","id":"1325751"}],"collectCount":80453,"originalTitle":"超时空同居","subtype":"movie","directors":[{"alt":"https://movie.douban.com/celebrity/1331887/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1520837465.56.jpg","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1520837465.56.jpg","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1520837465.56.jpg"},"name":"苏伦","id":"1331887"}],"year":"2018","images":{"small":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2520331478.jpg","large":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2520331478.jpg","medium":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2520331478.jpg"},"alt":"https://movie.douban.com/subject/27133303/","id":"27133303"}]
      * title : 正在上映的电影-厦门
      */
 
@@ -70,7 +70,7 @@ public class MovieSubjectEntity {
         this.subjects = subjects;
     }
 
-    @Entity(tableName = "subjects", indices = {@Index(value = "subjectId", unique = true)})
+    @Entity(tableName = "tb_movie", indices = {@Index(value = "subjectId", unique = true)})
     public static class SubjectsBean {
         /**
          * rating : {"max":10,"average":7.2,"stars":"40","min":0}
@@ -78,7 +78,7 @@ public class MovieSubjectEntity {
          * title : 超时空同居
          * casts : [{"alt":"https://movie.douban.com/celebrity/1312940/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1503986232.61.jpg","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1503986232.61.jpg","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1503986232.61.jpg"},"name":"雷佳音","id":"1312940"},{"alt":"https://movie.douban.com/celebrity/1275756/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1367210981.95.jpg","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1367210981.95.jpg","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1367210981.95.jpg"},"name":"佟丽娅","id":"1275756"},{"alt":"https://movie.douban.com/celebrity/1325751/","avatars":{"small":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1499435823.67.jpg","large":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1499435823.67.jpg","medium":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1499435823.67.jpg"},"name":"张衣","id":"1325751"}]
          * collectCount : 80453
-         * original_title : 超时空同居
+         * originalTitle : 超时空同居
          * subtype : movie
          * directors : [{"alt":"https://movie.douban.com/celebrity/1331887/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1520837465.56.jpg","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1520837465.56.jpg","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1520837465.56.jpg"},"name":"苏伦","id":"1331887"}]
          * year : 2018
@@ -92,7 +92,8 @@ public class MovieSubjectEntity {
         private String title;
         @SerializedName("collect_count")
         private int collectCount;
-        private String original_title;
+        @SerializedName("original_title")
+        private String originalTitle;
         private String subtype;
         private String year;
         @Embedded
@@ -100,25 +101,17 @@ public class MovieSubjectEntity {
         private String alt;
 
         @PrimaryKey(autoGenerate = true)
-        private int _id;
+        private int autoId;
 
         @SerializedName("id")
-        private String subjectId;
+        private int subjectId;
 
-        @TypeConverters(RoomDataConverter.class)
+        @Ignore
         private List<String> genres;
-        @TypeConverters(RoomDataConverter.class)
+        @Ignore
         private List<CastsBean> casts;
-        @TypeConverters(RoomDataConverter.class)
+        @Ignore
         private List<DirectorsBean> directors;
-
-        public int getId() {
-            return _id;
-        }
-
-        public void setId(int id) {
-            this._id = id;
-        }
 
         public RatingBean getRating() {
             return rating;
@@ -144,12 +137,12 @@ public class MovieSubjectEntity {
             this.collectCount = collectCount;
         }
 
-        public String getOriginal_title() {
-            return original_title;
+        public String getOriginalTitle() {
+            return originalTitle;
         }
 
-        public void setOriginal_title(String original_title) {
-            this.original_title = original_title;
+        public void setOriginalTitle(String originalTitle) {
+            this.originalTitle = originalTitle;
         }
 
         public String getSubtype() {
@@ -184,11 +177,19 @@ public class MovieSubjectEntity {
             this.alt = alt;
         }
 
-        public String getSubjectId() {
+        public int getAutoId() {
+            return autoId;
+        }
+
+        public void setAutoId(int autoId) {
+            this.autoId = autoId;
+        }
+
+        public int getSubjectId() {
             return subjectId;
         }
 
-        public void setSubjectId(String subjectId) {
+        public void setSubjectId(int subjectId) {
             this.subjectId = subjectId;
         }
 
@@ -206,23 +207,6 @@ public class MovieSubjectEntity {
 
         public void setCasts(List<CastsBean> casts) {
             this.casts = casts;
-        }
-
-        public String toActorStr() {
-            String actors = "";
-            if (casts != null) {
-                StringBuilder sb = new StringBuilder();
-                int num = Math.min(3, casts.size());
-                for (int i = 0; i < num; ++i) {
-                    sb.append(casts.get(i).getName());
-                    if (i < num - 1) {
-                        sb.append(" / ");
-                    }
-                }
-                actors = sb.toString();
-            }
-
-            return actors;
         }
 
         public List<DirectorsBean> getDirectors() {
@@ -316,6 +300,10 @@ public class MovieSubjectEntity {
         }
     }
 
+    @Entity(tableName = "tb_movie_casts", indices = {@Index(value = "movieId")},
+            foreignKeys = @ForeignKey(entity = SubjectsBean.class,
+                    parentColumns = "subjectId",
+                    childColumns = "movieId", onDelete = ForeignKey.CASCADE))
     public static class CastsBean {
         /**
          * alt : https://movie.douban.com/celebrity/1312940/
@@ -329,6 +317,26 @@ public class MovieSubjectEntity {
         private AvatarsBean avatars;
         private String name;
         private String id;
+        @PrimaryKey(autoGenerate = true)
+        private int autoId;
+
+        private int movieId;
+
+        public int getAutoId() {
+            return autoId;
+        }
+
+        public void setAutoId(int autoId) {
+            this.autoId = autoId;
+        }
+
+        public int getMovieId() {
+            return movieId;
+        }
+
+        public void setMovieId(int movieId) {
+            this.movieId = movieId;
+        }
 
         public String getAlt() {
             return alt;
@@ -399,6 +407,10 @@ public class MovieSubjectEntity {
         }
     }
 
+    @Entity(tableName = "tb_movie_director", indices = {@Index(value = "movieId")},
+            foreignKeys = @ForeignKey(entity = SubjectsBean.class,
+                    parentColumns = "subjectId",
+                    childColumns = "movieId", onDelete = ForeignKey.CASCADE))
     public static class DirectorsBean {
         /**
          * alt : https://movie.douban.com/celebrity/1331887/
@@ -408,9 +420,31 @@ public class MovieSubjectEntity {
          */
 
         private String alt;
+        @Embedded
         private AvatarsBeanX avatars;
         private String name;
         private int id;
+
+        @PrimaryKey(autoGenerate = true)
+        private int autoId;
+
+        private int movieId;
+
+        public int getAutoId() {
+            return autoId;
+        }
+
+        public void setAutoId(int autoId) {
+            this.autoId = autoId;
+        }
+
+        public int getMovieId() {
+            return movieId;
+        }
+
+        public void setMovieId(int movieId) {
+            this.movieId = movieId;
+        }
 
         public String getAlt() {
             return alt;

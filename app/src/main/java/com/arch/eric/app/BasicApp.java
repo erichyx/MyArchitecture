@@ -32,7 +32,7 @@ public class BasicApp extends Application {
         mAppExecutors = new AppExecutors();
 
         // 每次启动的时候先去删数据
-        mAppExecutors.diskIO().execute(() -> getDatabase().movieDao().deleteAll());
+        mAppExecutors.diskIO().execute(() -> getDatabase().movieDao().deleteAllMovie());
     }
 
     public static AppDatabase getDatabase() {
