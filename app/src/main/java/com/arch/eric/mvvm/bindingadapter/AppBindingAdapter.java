@@ -5,8 +5,9 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.arch.eric.common.image.ImageLoaderManager;
 import com.arch.eric.data.local.MovieSubjectEntity.RatingBean;
+
+import cn.eric.basicore.image.glide.ImageLoaderManager;
 
 /**
  * Created by eric on 2018/5/31
@@ -15,7 +16,7 @@ public class AppBindingAdapter {
 
     @BindingAdapter("imageUrl")
     public static void loadImage(ImageView view, String url) {
-        ImageLoaderManager.getImageLoader().loadImage(view.getContext(), url, view);
+        ImageLoaderManager.getImageLoader(view.getContext()).loadImage(view.getContext(), url, view);
     }
 
     @BindingAdapter("android:rating")

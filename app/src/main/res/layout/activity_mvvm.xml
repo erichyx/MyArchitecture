@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.arch.eric.mvvm.viewmodel.MovieViewModel" />
+            type="com.arch.eric.mvvm.MovieViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".mvvm.ui.MvvmActivity">
+        tools:context=".mvvm.MvvmActivity">
 
     </android.support.constraint.ConstraintLayout>
 </layout>

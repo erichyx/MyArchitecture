@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Architecture components
+    api deps.lifecycle.extensions
+    annotationProcessor deps.lifecycle.compiler
+
+    // Support Library
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+
+    // Retrofit2 & Rxjava2 & Gson
+    api deps.retrofit.rxjava2
+    api deps.retrofit.gson
+    api deps.rx_android
+
+    // Glide
+    implementation deps.glide.runtime
+    annotationProcessor deps.glide.compiler
+    implementation deps.glide.okhttp3
+
+    // ButterKnife
+    api deps.butterknife.runtime
+    annotationProcessor deps.butterknife.compiler
+
+    // Test Library
+    testImplementation deps.junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.espresso.core
+}

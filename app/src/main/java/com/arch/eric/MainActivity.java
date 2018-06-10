@@ -6,9 +6,10 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.arch.eric.mvp.business.MvpFragment;
-import com.arch.eric.mvvm.ui.MovieFragment;
-import com.arch.eric.utils.ActivityUtils;
+import com.arch.eric.mvp.MvpFragment;
+import com.arch.eric.mvvm.MovieFragment;
+
+import cn.eric.basicore.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity
 {
