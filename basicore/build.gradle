@@ -17,7 +17,7 @@ android {
         }
     }
     dataBinding {
-        enabled = true
+        enabled true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -52,6 +52,6 @@ dependencies {
 
     // Test Library
     testImplementation deps.junit
-    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
 }

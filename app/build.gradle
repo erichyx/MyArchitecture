@@ -47,7 +47,7 @@ dependencies {
     // Support Library
     implementation deps.support.app_compat
     implementation deps.support.design
-    implementation deps.support.constraint_layout
+    implementation deps.constraint_layout
     implementation deps.support.cardview
     implementation deps.support.v4
 
@@ -63,10 +63,10 @@ dependencies {
 //    implementation deps.glide.okhttp3
 
 //    implementation deps.butterknife.runtime
-//    annotationProcessor deps.butterknife.compiler
+    annotationProcessor deps.butterknife.compiler
 
     // Test Library
     testImplementation deps.junit
-    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
 }

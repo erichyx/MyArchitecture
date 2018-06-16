@@ -1,12 +1,12 @@
 package com.arch.eric.mvp;
 
-import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.arch.eric.R;
-import com.arch.eric.databinding.JokeItemBinding;
 import com.arch.eric.entity.JokeEntity;
 
 import java.util.List;
@@ -22,9 +22,8 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.JokeViewHolder
     @Override
     public JokeViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        JokeItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                R.layout.joke_item, parent, false);
-        return new JokeViewHolder(binding);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.joke_item, parent, false);
+        return new JokeViewHolder(itemView);
     }
 
     public void setList(List<JokeEntity> list)
@@ -37,8 +36,9 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.JokeViewHolder
     public void onBindViewHolder(JokeViewHolder holder, int position)
     {
         JokeEntity entity = mList.get(position);
-        holder.binding.setJokeItem(entity);
-        holder.binding.executePendingBindings();
+        holder.mTvId.setText(entity.getId());
+        holder.mTvCategory.setText(entity.getCategory());
+        holder.mTvJoke.setText(entity.getJoke());
     }
 
     @Override
@@ -49,12 +49,16 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.JokeViewHolder
 
     static class JokeViewHolder extends RecyclerView.ViewHolder
     {
-        private JokeItemBinding binding;
+        final TextView mTvId;
+        final TextView mTvCategory;
+        final TextView mTvJoke;
 
-        public JokeViewHolder(JokeItemBinding binding)
+        JokeViewHolder(View itemView)
         {
-            super(binding.getRoot());
-            this.binding = binding;
+            super(itemView);
+            mTvId = itemView.findViewById(R.id.tv_id);
+            mTvCategory = itemView.findViewById(R.id.category);
+            mTvJoke = itemView.findViewById(R.id.joke);
         }
     }
 }

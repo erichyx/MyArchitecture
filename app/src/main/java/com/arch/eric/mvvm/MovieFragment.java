@@ -10,17 +10,16 @@ import android.util.Log;
 
 import com.arch.eric.BR;
 import com.arch.eric.R;
-import com.arch.eric.databinding.FragmentHomeBinding;
+import com.arch.eric.databinding.FragmentMvvmBinding;
 
 import cn.eric.basicore.arch.mvvm.fetcher.Resource;
-
 import cn.eric.basicore.arch.mvvm.uicontroller.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MovieFragment extends BaseFragment<FragmentHomeBinding, MovieViewModel> implements SwipeRefreshLayout.OnRefreshListener {
-    private FragmentHomeBinding mBinding;
+public class MovieFragment extends BaseFragment<FragmentMvvmBinding, MovieViewModel> implements SwipeRefreshLayout.OnRefreshListener {
+    private FragmentMvvmBinding mBinding;
     private MovieItemAdapter mMovieAdapter;
     private MovieViewModel mMovieViewModel;
     private static final String CITY = "厦门";
@@ -41,7 +40,7 @@ public class MovieFragment extends BaseFragment<FragmentHomeBinding, MovieViewMo
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_mvvm;
     }
 
     @Override

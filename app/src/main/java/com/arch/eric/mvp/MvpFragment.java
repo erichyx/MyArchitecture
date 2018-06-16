@@ -38,7 +38,7 @@ public class MvpFragment extends BaseMvpFragment implements JokeView,
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_mvp;
     }
 
     @Override
