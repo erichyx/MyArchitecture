@@ -8,20 +8,20 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import cn.eric.basicore.arch.mvvm.MvvmControlBehavior;
+import me.listenzz.navigation.AwesomeFragment;
 
 /**
  * Created by eric on 2018/5/26
  */
-public abstract class BaseFragment<B extends ViewDataBinding, VM extends ViewModel> extends Fragment
+public abstract class BaseFragment<B extends ViewDataBinding, VM extends ViewModel> extends AwesomeFragment
         implements MvvmControlBehavior<B, VM> {
 
-    private B mViewDataBinding;
+    protected B mViewDataBinding;
     protected VM mViewModel;
 
     protected <T extends ViewModel> T getViewModel(Class<T> cls) {
@@ -30,11 +30,6 @@ public abstract class BaseFragment<B extends ViewDataBinding, VM extends ViewMod
             getLifecycle().addObserver((LifecycleObserver) t);
         }
         return t;
-    }
-
-    @Override
-    public B getViewDataBinding() {
-        return mViewDataBinding;
     }
 
     @Override

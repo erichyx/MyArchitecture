@@ -3,23 +3,22 @@ package cn.eric.basicore.arch.mvp.uicontroller;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.eric.basicore.arch.mvp.factory.PresenterFactory;
 import cn.eric.basicore.arch.mvp.presenter.BaseMvpPresenter;
 import cn.eric.basicore.arch.mvp.view.BaseMvpView;
+import me.listenzz.navigation.AwesomeFragment;
 
 /**
  * Created by eric on 2018/1/6.
  */
 
-public abstract class BaseMvpFragment extends Fragment implements MvpControlBehavior {
+public abstract class BaseMvpFragment extends AwesomeFragment implements MvpControlBehavior {
 
     private Unbinder mUnbinder;
 

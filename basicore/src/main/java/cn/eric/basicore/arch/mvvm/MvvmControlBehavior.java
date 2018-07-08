@@ -14,6 +14,4 @@ public interface MvvmControlBehavior<V extends ViewDataBinding, VM extends ViewM
     int getViewModelId();
 
     VM getViewModel();
-
-    V getViewDataBinding();
 }

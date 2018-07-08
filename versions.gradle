@@ -32,7 +32,7 @@ versions.kotlin = "1.2.41"
 versions.paging = "1.0.0"
 versions.work = "1.0.0-alpha02"
 versions.navigation = "1.0.0-alpha01"
-
+versions.android_navigation = "1.8.4"
 versions.butterknife = "8.8.1"
 
 
@@ -127,8 +127,8 @@ deps.hamcrest = "org.hamcrest:hamcrest-all:$versions.hamcrest"
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 
 def build_versions = [:]
-build_versions.min_sdk = 14
-build_versions.target_sdk = 26
+build_versions.min_sdk = 16
+build_versions.target_sdk = 27
 build_versions.build_tools = "27.0.3"
 ext.build_versions = build_versions
 
@@ -149,6 +149,10 @@ navigation.testing_ktx = "android.arch.navigation:navigation-testing-ktx:$versio
 deps.navigation = navigation
 
 ext.deps = deps
+
+def other = [:]
+other.android_navigation = "me.listenzz:navigation:$versions.android_navigation"
+deps.other = other
 
 def addRepos(RepositoryHandler handler) {
     handler.google()

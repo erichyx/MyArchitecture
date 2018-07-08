@@ -34,6 +34,7 @@ dependencies {
 
     // Support Library
     implementation deps.support.app_compat
+    implementation deps.support.design
     implementation deps.support.recyclerview
 
     // Retrofit2 & Rxjava2 & Gson
@@ -49,6 +50,9 @@ dependencies {
     // ButterKnife
     api deps.butterknife.runtime
     annotationProcessor deps.butterknife.compiler
+
+    // Third party Navigation
+    api deps.other.android_navigation
 
     // Test Library
     testImplementation deps.junit

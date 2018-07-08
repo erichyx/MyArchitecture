@@ -17,7 +17,7 @@ import cn.eric.basicore.arch.mvvm.MvvmControlBehavior;
 public abstract class BaseActivity<B extends ViewDataBinding, VM extends ViewModel> extends AppCompatActivity
         implements MvvmControlBehavior<B, VM> {
 
-    private B mViewDataBinding;
+    protected B mViewDataBinding;
     protected VM mViewModel;
 
     protected <T extends ViewModel> T getViewModel(Class<T> cls) {
@@ -26,11 +26,6 @@ public abstract class BaseActivity<B extends ViewDataBinding, VM extends ViewMod
             getLifecycle().addObserver((LifecycleObserver) t);
         }
         return t;
-    }
-
-    @Override
-    public B getViewDataBinding() {
-        return mViewDataBinding;
     }
 
     @Override

@@ -9,6 +9,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.util.Log;
 
 import com.arch.eric.BR;
+
+import cn.eric.basicore.arch.mvvm.uicontroller.BottomTabFragment;
 import com.arch.eric.R;
 import com.arch.eric.databinding.FragmentMvvmBinding;
 
@@ -19,7 +21,6 @@ import cn.eric.basicore.arch.mvvm.uicontroller.BaseFragment;
  * A simple {@link Fragment} subclass.
  */
 public class MovieFragment extends BaseFragment<FragmentMvvmBinding, MovieViewModel> implements SwipeRefreshLayout.OnRefreshListener {
-    private FragmentMvvmBinding mBinding;
     private MovieItemAdapter mMovieAdapter;
     private MovieViewModel mMovieViewModel;
     private static final String CITY = "厦门";
@@ -30,10 +31,11 @@ public class MovieFragment extends BaseFragment<FragmentMvvmBinding, MovieViewMo
         // Required empty public constructor
     }
 
-    public static MovieFragment newInstance() {
+    public static MovieFragment newInstance(int sceneId) {
         Bundle args = new Bundle();
 
         MovieFragment fragment = new MovieFragment();
+        args.putString(BottomTabFragment.ARGS_SCENE_ID, sceneId + "");
         fragment.setArguments(args);
         return fragment;
     }
@@ -58,11 +60,10 @@ public class MovieFragment extends BaseFragment<FragmentMvvmBinding, MovieViewMo
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mBinding = getViewDataBinding();
-        mBinding.setFragment(this);
+        mViewDataBinding.setFragment(this);
         mMovieAdapter = new MovieItemAdapter();
-        mBinding.recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        mBinding.recyclerView.setAdapter(mMovieAdapter);
+        mViewDataBinding.recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        mViewDataBinding.recyclerView.setAdapter(mMovieAdapter);
 
         subscribeUi(mMovieViewModel, true);
     }
@@ -72,7 +73,7 @@ public class MovieFragment extends BaseFragment<FragmentMvvmBinding, MovieViewMo
             switch (listResource.status) {
                 case Resource.LOADING:
                     Log.d(TAG, "数据加载中：" + listResource.data);
-                    mBinding.setIsRefreshing(true);
+                    mViewDataBinding.setIsRefreshing(true);
                     if (listResource.data != null) {
                         mMovieAdapter.setItems(listResource.data);
                     }
@@ -88,7 +89,7 @@ public class MovieFragment extends BaseFragment<FragmentMvvmBinding, MovieViewMo
                 default:
                     break;
             }
-            mBinding.setIsRefreshing(false);
+            mViewDataBinding.setIsRefreshing(false);
         });
     }
 

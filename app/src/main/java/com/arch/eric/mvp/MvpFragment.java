@@ -5,6 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import cn.eric.basicore.arch.mvvm.uicontroller.BottomTabFragment;
 import com.arch.eric.R;
 import com.arch.eric.entity.JokeEntity;
 
@@ -27,10 +28,10 @@ public class MvpFragment extends BaseMvpFragment implements JokeView,
     private JokeAdapter mJokeAdapter;
     private JokePresenter jokePresenter;
 
-    public static MvpFragment newInstance() {
+    public static MvpFragment newInstance(int sceneId) {
 
         Bundle args = new Bundle();
-
+        args.putString(BottomTabFragment.ARGS_SCENE_ID, sceneId + "");
         MvpFragment fragment = new MvpFragment();
         fragment.setArguments(args);
         return fragment;
