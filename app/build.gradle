@@ -3,6 +3,31 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
+
+    signingConfigs {
+        release {
+
+            // 加载资源
+            Properties properties = new Properties()
+            InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+            properties.load(inputStream)
+
+            // 读取文件
+            def keystoreFilepath = properties.getProperty('keystore.path')
+            def keyFile  = file(keystoreFilepath)
+
+            // 读取字段
+            def keystoreAlias = properties.getProperty('keystore.alias')
+            def keystoreAliasPw = properties.getProperty('keystore.alias_password')
+            def keystorePw  = properties.getProperty('keystore.password')
+
+            keyAlias keystoreAlias
+            keyPassword keystoreAliasPw
+            storeFile keyFile
+            storePassword keystorePw
+        }
+    }
+
     defaultConfig {
         applicationId "com.arch.eric"
         minSdkVersion build_versions.min_sdk
@@ -19,8 +44,13 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
         }
     }
     dataBinding {
